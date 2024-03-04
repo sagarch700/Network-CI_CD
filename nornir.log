@@ -1,0 +1,300 @@
+2024-03-04 23:08:35,734 -  nornir.core -     INFO -        run() - Running task 'pull_info' with args {} on 1 hosts
+2024-03-04 23:08:38,202 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/base_connection.py", line 1137, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/paramiko/client.py", line 485, in connect
+    self._auth(
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/paramiko/client.py", line 818, in _auth
+    raise saved_exception
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/paramiko/client.py", line 805, in _auth
+    self._transport.auth_password(username, password)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/paramiko/transport.py", line 1603, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/paramiko/auth_handler.py", line 263, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 186, in open
+    self.device = ConnectHandler(
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 399, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/base_connection.py", line 488, in __init__
+    self._open()
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/base_connection.py", line 493, in _open
+    self.establish_connection()
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/cisco/cisco_xr.py", line 11, in establish_connection
+    super().establish_connection(width=width, height=height)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/base_connection.py", line 1174, in establish_connection
+    raise NetmikoAuthenticationException(msg)
+netmiko.exceptions.NetmikoAuthenticationException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr sandbox-iosxr-1.cisco.com:22
+
+
+Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 79, in open
+    self.device.open()
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 202, in open
+    raise ConnectError(au_err.args[0])
+napalm.pyIOSXR.exceptions.ConnectError: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr sandbox-iosxr-1.cisco.com:22
+
+
+Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 82, in open
+    raise ConnectionException(conn_err.args[0])
+napalm.base.exceptions.ConnectionException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr sandbox-iosxr-1.cisco.com:22
+
+
+Authentication failed.
+
+2024-03-04 23:08:38,203 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pull_info' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/Users/sagarch/Desktop/Vs Code/Network-CI_CD/simple_iosxr.py", line 15, in pull_info
+    result = task.run(task = napalm_get, getters = ["get_interfaces"])
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2024-03-04 23:09:23,477 -  nornir.core -     INFO -        run() - Running task 'pull_info' with args {} on 1 hosts
+2024-03-04 23:09:25,604 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/base_connection.py", line 1137, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/paramiko/client.py", line 485, in connect
+    self._auth(
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/paramiko/client.py", line 818, in _auth
+    raise saved_exception
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/paramiko/client.py", line 805, in _auth
+    self._transport.auth_password(username, password)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/paramiko/transport.py", line 1603, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/paramiko/auth_handler.py", line 263, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 186, in open
+    self.device = ConnectHandler(
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 399, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/base_connection.py", line 488, in __init__
+    self._open()
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/base_connection.py", line 493, in _open
+    self.establish_connection()
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/cisco/cisco_xr.py", line 11, in establish_connection
+    super().establish_connection(width=width, height=height)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/netmiko/base_connection.py", line 1174, in establish_connection
+    raise NetmikoAuthenticationException(msg)
+netmiko.exceptions.NetmikoAuthenticationException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr sandbox-iosxr-1.cisco.com:22
+
+
+Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 79, in open
+    self.device.open()
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 202, in open
+    raise ConnectError(au_err.args[0])
+napalm.pyIOSXR.exceptions.ConnectError: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr sandbox-iosxr-1.cisco.com:22
+
+
+Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 82, in open
+    raise ConnectionException(conn_err.args[0])
+napalm.base.exceptions.ConnectionException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr sandbox-iosxr-1.cisco.com:22
+
+
+Authentication failed.
+
+2024-03-04 23:09:25,604 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pull_info' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/Users/sagarch/Desktop/Vs Code/Network-CI_CD/simple_iosxr.py", line 15, in pull_info
+    result = task.run(task = napalm_get, getters = ["get_interfaces"])
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_get (failed)
+
+
+2024-03-04 23:12:18,856 -  nornir.core -     INFO -        run() - Running task 'pull_info' with args {} on 1 hosts
+2024-03-04 23:12:49,735 -  nornir.core -     INFO -        run() - Running task 'pull_vars' with args {} on 1 hosts
+2024-03-04 23:12:57,596 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pull_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/Users/sagarch/Desktop/Vs Code/Network-CI_CD/simple_iosxr.py", line 28, in pull_vars
+    push_config(task)
+  File "/Users/sagarch/Desktop/Vs Code/Network-CI_CD/simple_iosxr.py", line 37, in push_config
+    task.run(task=send_configs, configs=configurations)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_configs (failed)
+
+
+2024-03-04 23:13:30,267 -  nornir.core -     INFO -        run() - Running task 'pull_vars' with args {} on 1 hosts
+2024-03-04 23:13:30,282 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/jinja2/loaders.py", line 137, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/jinja2/environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates/ospf_iosxr.j2", line 4, in template
+    {{% for interface in host.facts.OSPF["INTERFACES"] %}}
+jinja2.exceptions.TemplateSyntaxError: unexpected '%'
+
+2024-03-04 23:13:30,283 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pull_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/Users/sagarch/Desktop/Vs Code/Network-CI_CD/simple_iosxr.py", line 28, in pull_vars
+    push_config(task)
+  File "/Users/sagarch/Desktop/Vs Code/Network-CI_CD/simple_iosxr.py", line 34, in push_config
+    ospf_configs = task.run(task=template_file, template="ospf_iosxr.j2", path="templates")
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2024-03-04 23:14:01,089 -  nornir.core -     INFO -        run() - Running task 'pull_vars' with args {} on 1 hosts
+2024-03-04 23:14:01,093 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/jinja2/loaders.py", line 137, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/jinja2/environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates/ospf_iosxr.j2", line 4, in template
+    {{% for interface in host.facts.OSPF["INTERFACES"] %}}
+jinja2.exceptions.TemplateSyntaxError: unexpected '%'
+
+2024-03-04 23:14:01,093 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pull_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/Users/sagarch/Desktop/Vs Code/Network-CI_CD/simple_iosxr.py", line 28, in pull_vars
+    push_config(task)
+  File "/Users/sagarch/Desktop/Vs Code/Network-CI_CD/simple_iosxr.py", line 34, in push_config
+    ospf_configs = task.run(task=template_file, template="ospf_iosxr.j2", path="templates")
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2024-03-04 23:17:41,769 -  nornir.core -     INFO -        run() - Running task 'pull_vars' with args {} on 1 hosts
+2024-03-04 23:17:52,262 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'pull_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/Users/sagarch/Desktop/Vs Code/Network-CI_CD/simple_iosxr.py", line 28, in pull_vars
+    push_config(task)
+  File "/Users/sagarch/Desktop/Vs Code/Network-CI_CD/simple_iosxr.py", line 37, in push_config
+    task.run(task=send_configs, configs=configurations)
+  File "/Users/sagarch/Desktop/Vs Code/Network_Automation_Projects/lib/python3.10/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_configs (failed)
+
+
+2024-03-04 23:19:52,696 -  nornir.core -     INFO -        run() - Running task 'pull_vars' with args {} on 1 hosts

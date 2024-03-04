@@ -1,0 +1,20 @@
+i have used docker container for my jenkins
+
+# This is to install the jenkins
+$ docker run -p 8080:8080 -p 50000:50000 -v ~/jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+after that visit --> jenkins_home/secrets/
+and issue car InitialAdminPassword --> this will be used to unlock jenkins
+after that jenkins will download the plugins
+
+# Some useful commands
+docker run -d --name jenkins -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts
+docker stop jenkins
+docker start jenkins
+
+give jenkins sudo access
+sudo visudo
+Jenkins   ALL = (ALL) NOPASSWD:ALL
+
+brew services start jenkins-lts
+echo $?
+

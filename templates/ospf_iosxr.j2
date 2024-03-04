@@ -1,0 +1,9 @@
+router ospf {{ host.facts.OSPF.PROCESS }}
+router-id {{ host.facts.OSPF.RID }}
+area {{ host.facts.OSPF.AREA }}
+{% for interface in host.facts.OSPF.INTERFACES %}
+interface {{ interface }}
+{% if interface == "Loopback 0" %}
+passive
+{% endif %}
+{% endfor %}
