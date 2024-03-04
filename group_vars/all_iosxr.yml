@@ -2,7 +2,7 @@
 
 OSPF:
     PROCESS: "TEST"
-    RID:  "1.1.1.1"
+    RID:  "2.2.2.2"
     AREA: "0"
     INTERFACES:
         - "GigabitEthernet 0/0/0/6"
